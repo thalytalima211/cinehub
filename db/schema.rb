@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_10_19_200834) do
+ActiveRecord::Schema[7.1].define(version: 2025_10_20_013921) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,13 +38,22 @@ ActiveRecord::Schema[7.1].define(version: 2025_10_19_200834) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "movie_tags", force: :cascade do |t|
+    t.bigint "movie_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_movie_tags_on_movie_id"
+    t.index ["tag_id"], name: "index_movie_tags_on_tag_id"
+  end
+
   create_table "movies", force: :cascade do |t|
     t.string "title"
     t.text "description"
     t.integer "release_year"
     t.integer "duration"
     t.bigint "director_id", null: false
-    t.float "avarege_rating"
+    t.float "average_rating"
     t.bigint "category_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
@@ -52,11 +61,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_10_19_200834) do
     t.index ["category_id"], name: "index_movies_on_category_id"
     t.index ["director_id"], name: "index_movies_on_director_id"
     t.index ["user_id"], name: "index_movies_on_user_id"
-  end
-
-  create_table "movies_tags", id: false, force: :cascade do |t|
-    t.bigint "movie_id", null: false
-    t.bigint "tag_id", null: false
   end
 
   create_table "tags", force: :cascade do |t|
@@ -80,6 +84,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_10_19_200834) do
 
   add_foreign_key "comments", "movies"
   add_foreign_key "comments", "users"
+  add_foreign_key "movie_tags", "movies"
+  add_foreign_key "movie_tags", "tags"
   add_foreign_key "movies", "categories"
   add_foreign_key "movies", "directors"
   add_foreign_key "movies", "users"
