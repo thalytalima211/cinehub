@@ -1,3 +1,15 @@
-<h1 class="text-4xl font-bold text-yellow-200 underline">
-  Hello world!
-</h1>
+<turbo-frame id="movies" class="w-full">
+    <div class="grid grid-cols-3 gap-3 ">
+    <% @movies.each do |movie| %>
+        <div class="text-white bg-gray-800 p-3 rounded-md transition-all hover:scale-103 duration-300 cursor-pointer">
+            <p class="font-bold"><%= movie.title %></p>
+            <p>(<%= movie.release_year %>)</p>
+        </div>
+    <% end %>
+    </div>
+
+    <div class="flex justify-center mt-6">
+        <%#= pagy_nav(@pagy).gsub('<a', '<a class="px-3 py-2 mx-1 rounded bg-gray-200 hover:bg-gray-300 text-sm"') %>
+        <%== pagy_nav(@pagy) %>
+    </div>
+</turbo-frame>

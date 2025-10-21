@@ -7,12 +7,18 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+  <body class="bg-gray-500 flex flex-col h-screen">
+    <nav class="mt-4 py-5 bg-gray-800 flex">
+      <div class="w-3/4 mx-auto">
+        <p class="text-4xl text-sky-400 font-bold">CineHub</p>
+      </div>
+    </nav>
+    <main class="container mx-auto mt-10 w-3/4 flex">
       <%= yield %>
     </main>
   </body>

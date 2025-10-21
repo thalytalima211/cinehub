@@ -1,3 +1,7 @@
 class HomeController < ApplicationController
-  def index; end
+  def index
+    movies_scope = Movie.all.order(release_year: :desc)
+
+    @pagy, @movies = pagy(movies_scope)
+  end
 end
