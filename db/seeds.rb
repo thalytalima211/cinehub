@@ -11,102 +11,125 @@ category2 = Category.create!(name: "Romance")
 category3 = Category.create!(name: "Comédia")
 
 movie1 = Movie.create!(
-    title: "O Mistério do Tempo",
-    description: "Um cientista descobre uma forma de viajar no tempo, mas enfrenta consequências inesperadas.",
-    release_year: 2023,
-    duration: 120,
-    director: director1,
-    category: category1,
-    user: user1,
-    average_rating: 4.5
-  )
-movie2 = Movie.create!(
-    title: "Amor nas Alturas",
-    description: "Dois pilotos se apaixonam durante uma viagem pelo mundo.",
-    release_year: 2022,
-    duration: 110,
-    director: director2,
-    category: category2,
-    user: user2,
-    average_rating: 4.0
-  )
-movie3 = Movie.create!(
-    title: "Risos e Lágrimas",
-    description: "Um grupo de amigos enfrenta desafios da vida enquanto descobre o verdadeiro valor da amizade.",
-    release_year: 2024,
-    duration: 95,
-    director: director3,
-    category: category3,
-    user: user3,
-    average_rating: 4.8
-  )
-
-movie4 = Movie.create!(
-  title: "Sombras do Amanhã",
-  description: "Em um futuro distópico, uma hacker tenta derrubar um sistema autoritário que controla todas as memórias humanas.",
-  release_year: 2025,
-  duration: 130,
+  title: "O Poderoso Chefão",
+  description: "A saga da família Corleone, mostrando poder, família e crime organizado.",
+  release_year: 1972,
+  duration: 175,
   director: director1,
   category: category2,
+  user: user1,
+  average_rating: 4.9
+)
+
+movie2 = Movie.create!(
+  title: "Interestelar",
+  description: "Uma equipe de exploradores viaja pelo espaço para garantir a sobrevivência da humanidade.",
+  release_year: 2014,
+  duration: 169,
+  director: director2,
+  category: category1,
   user: user2,
-  average_rating: 4.6
+  average_rating: 4.8
+)
+
+movie3 = Movie.create!(
+  title: "A Origem",
+  description: "Um ladrão que invade os sonhos das pessoas precisa realizar seu trabalho mais complexo: plantar uma ideia.",
+  release_year: 2010,
+  duration: 148,
+  director: director2,
+  category: category1,
+  user: user3,
+  average_rating: 4.7
+)
+
+movie4 = Movie.create!(
+  title: "Forrest Gump",
+  description: "A incrível vida de Forrest, que testemunha e influencia eventos históricos enquanto busca o amor e a amizade.",
+  release_year: 1994,
+  duration: 142,
+  director: director3,
+  category: category2,
+  user: user1,
+  average_rating: 4.9
 )
 
 movie5 = Movie.create!(
-  title: "O Eco da Liberdade",
-  description: "Um jornalista descobre uma conspiração política enquanto tenta revelar a verdade sobre um governo corrupto.",
-  release_year: 2023,
-  duration: 118,
-  director: director2,
+  title: "O Senhor dos Anéis: A Sociedade do Anel",
+  description: "Frodo e seus amigos embarcam em uma jornada para destruir o Um Anel e salvar a Terra Média.",
+  release_year: 2001,
+  duration: 178,
+  director: director3,
   category: category3,
-  user: user1,
-  average_rating: 4.3
+  user: user2,
+  average_rating: 4.8
 )
 
 movie6 = Movie.create!(
-  title: "Além das Estrelas",
-  description: "Uma astronauta luta pela sobrevivência após ficar presa em uma estação espacial danificada.",
-  release_year: 2021,
-  duration: 125,
-  director: director3,
+  title: "Matrix",
+  description: "Neo descobre a verdade sobre a realidade e se junta a rebeldes para lutar contra máquinas controladoras.",
+  release_year: 1999,
+  duration: 136,
+  director: director1,
   category: category1,
   user: user3,
   average_rating: 4.7
 )
 
 movie7 = Movie.create!(
-  title: "A Casa de Vidro",
-  description: "Uma família se muda para uma mansão isolada e começa a perceber que está sendo observada por algo misterioso.",
-  release_year: 2022,
-  duration: 105,
-  director: director2,
+  title: "Clube da Luta",
+  description: "Um homem insatisfeito com sua vida cria um clube secreto de luta que muda sua percepção do mundo.",
+  release_year: 1999,
+  duration: 139,
+  director: director1,
   category: category1,
   user: user2,
-  average_rating: 4.2
+  average_rating: 4.6
 )
 
 movie8 = Movie.create!(
-  title: "Códigos do Destino",
-  description: "Um programador descobre uma sequência matemática que prevê eventos trágicos e precisa decidir entre intervir ou não.",
-  release_year: 2024,
-  duration: 115,
-  director: director1,
-  category: category3,
+  title: "Gladiador",
+  description: "Maximus, um general romano traído, luta para vingar sua família e restaurar a justiça em Roma.",
+  release_year: 2000,
+  duration: 155,
+  director: director2,
+  category: category1,
   user: user3,
-  average_rating: 4.9
+  average_rating: 4.8
 )
 
 movie9 = Movie.create!(
-  title: "A Melodia do Silêncio",
-  description: "Uma musicista surda encontra uma nova forma de se expressar através das vibrações do som.",
-  release_year: 2023,
-  duration: 100,
+  title: "Jurassic Park",
+  description: "Um parque temático com dinossauros clonados enfrenta um caos quando as criaturas escapam do controle.",
+  release_year: 1993,
+  duration: 127,
   director: director3,
-  category: category2,
+  category: category3,
   user: user1,
-  average_rating: 4.4
+  average_rating: 4.7
 )
 
+movie10 = Movie.create!(
+  title: "Avatar",
+  description: "Em Pandora, um ex-fuzileiro se envolve em uma luta entre humanos e nativos Na'vi por recursos naturais.",
+  release_year: 2009,
+  duration: 162,
+  director: director2,
+  category: category3,
+  user: user2,
+  average_rating: 4.6
+)
+
+movie1.poster.attach(io: File.open("db/images/movie1.jpg"), filename: "movie1.jpg")
+movie2.poster.attach(io: File.open("db/images/movie2.jpg"), filename: "movie2.jpg")
+movie3.poster.attach(io: File.open("db/images/movie3.jpeg"), filename: "movie3.jpeg")
+movie4.poster.attach(io: File.open("db/images/movie4.jpeg"), filename: "movie4.jpeg")
+movie5.poster.attach(io: File.open("db/images/movie5.jpg"), filename: "movie5.jpg")
+movie6.poster.attach(io: File.open("db/images/movie6.jpg"), filename: "movie6.jpg")
+movie7.poster.attach(io: File.open("db/images/movie7.jpg"), filename: "movie7.jpg")
+movie8.poster.attach(io: File.open("db/images/movie8.jpg"), filename: "movie8.jpg")
+movie9.poster.attach(io: File.open("db/images/movie9.jpg"), filename: "movie9.jpg")
+movie10.poster.attach(io: File.open("db/images/movie10.jpg"), filename: "movie10.jpg")
 
 Comment.create!(user: user1, movie: movie1, rating: 5, content: "Incrível, efeitos e história impecáveis!", username: user1.name)
 Comment.create!(user: user2, movie: movie1, rating: 4, content: "Muito bom, mas poderia ser mais emocionante.", username: user2.name)

@@ -1,9 +1,12 @@
 <turbo-frame id="movies" class="w-full">
-    <div class="grid grid-cols-3 gap-3 ">
+    <div class="grid grid-cols-3 gap-x-3 gap-y-5">
     <% @movies.each do |movie| %>
-        <div class="text-white bg-gray-800 p-3 rounded-md transition-all hover:scale-103 duration-300 cursor-pointer">
-            <p class="font-bold"><%= movie.title %></p>
-            <p>(<%= movie.release_year %>)</p>
+        <div class="flex bg-gray-800 text-white rounded-lg shadow-lg overflow-hidden w-full max-w-3xl h-48 transition-all hover:scale-103 cursor-pointer">
+            <%= image_tag movie.poster, alt: movie.title, class: "w-40 h-full object-cover" %>
+            <div class="p-4 flex flex-col flex-1">
+                <p class="font-bold"><%= movie.title %></p>
+                <p>(<%= movie.release_year %>)</p>
+            </div>
         </div>
     <% end %>
     </div>

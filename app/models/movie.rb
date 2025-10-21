@@ -3,6 +3,7 @@ class Movie < ApplicationRecord
   belongs_to :category
   belongs_to :user
 
+  has_one_attached :poster
   has_many :comments, dependent: :destroy
   has_many :tags, through: :movie_tags
 
