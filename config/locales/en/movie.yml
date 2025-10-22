@@ -1,0 +1,23 @@
+en:
+  time:
+    minute:
+      one: "minute"
+      other: "minutes"
+  notices:
+    movie:
+      created: ''
+  alerts:
+    movie:
+      not_created: ''
+  activerecord:
+    models:
+      movie:
+        one: 'movie'
+        many: 'movies'
+    attributes:
+      movie:
+        description: 'Synopsis'
+        technical_details: 'Technical Details'
+        director: 'Director'
+        category: 'Category'
+        tags: 'Tags'

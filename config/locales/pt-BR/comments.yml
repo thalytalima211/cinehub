@@ -1,4 +1,8 @@
 pt-BR:
+  actions:
+    comment:
+      create: 'Deixe seu comentário'
+      no_comments: 'Nenhum comentário até o momento.'
   notices:
     comment:
       created: 'Comentário enviado com sucesso!'

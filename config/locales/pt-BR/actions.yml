@@ -1,0 +1,4 @@
+pt-BR:
+  actions:
+    return_homepage: 'Voltar para a página inicial'
+    send: 'Enviar'

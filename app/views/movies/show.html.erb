@@ -1,5 +1,5 @@
 <section class="flex flex-col text-white w-full">
-    <%= link_to 'Voltar para a página inicial', root_path,
+    <%= link_to t('actions.return_homepage'), root_path,
     class: "px-5 py-2 rounded-lg bg-gray-800 w-fit
           font-medium hover:bg-gray-700 transition-colors duration-300 
           shadow-md hover:shadow-lg transform hover:-translate-y-0.5" %>
@@ -16,34 +16,34 @@
             <div class="flex flex-col justify-center">
                 <p class="text-4xl font-bold"><%= @movie.title %></p>
                 <p class="text-2xl font-medium"><%= @movie.release_year %></p>
-                <p class="text-2xl font-medium"><%= @movie.duration %> minutos</p>
+                <p class="text-2xl font-medium"><%= @movie.duration %> <%= t('time.minute', count: @movie.duration).downcase %></p>
                 <div class="text-xl font-medium flex items-center gap-1 text-yellow-300">
                     <i data-lucide="star" class="w-5 h-5"></i>
-                    <span><%= @movie.average_rating || 0 %></span>
+                    <span><%= number_with_precision(@movie.average_rating || 0, precision: 2) %></span>
                 </div>
             </div>
         </div>
 
         <div class="mt-3">
-            <p class="text-2xl font-bold">Sinopse</p>
+            <p class="text-2xl font-bold"><%= Movie.human_attribute_name(:description) %></p>
             <p><%= @movie.description %></p>
 
-            <p class="text-2xl font-bold mt-2">Detalhes Técnicos</p>
-            <p><span class="font-medium">Diretor: </span><%= @movie.director.name %></p>
-            <p><span class="font-medium">Categoria: </span><%= @movie.category.name %></p>
-            <p><span class="font-medium">Tags: </span><%= @movie.tags.any? ? @movie.tags.pluck(:name).join(', ') : 'Nenhuma tag' %></p>
+            <p class="text-2xl font-bold mt-2"><%= Movie.human_attribute_name(:technical_details) %></p>
+            <p><span class="font-medium"><%= Movie.human_attribute_name(:director) %>: </span><%= @movie.director.name %></p>
+            <p><span class="font-medium"><%= Movie.human_attribute_name(:category) %>: </span><%= @movie.category.name %></p>
+            <p><span class="font-medium"><%= Movie.human_attribute_name(:tag) %>: </span><%= @movie.tags.any? ? @movie.tags.pluck(:name).join(', ') : 'Nenhuma tag' %></p>
         </div>
 
         <div class="mt-3 flex flex-col mb-6">
-            <p class="text-2xl font-bold">Comentários</p>
+            <p class="text-2xl font-bold"><%= t('activerecord.models.comment.many') %></p>
 
             <div class="mt-6 bg-gray-800 p-4 rounded-lg shadow-md">
-                <h3 class="text-white font-bold mb-3">Deixe seu comentário</h3>
-                <%= form_with(model: [@movie, @comment || Comment.new], local: true, class: "flex flex-col gap-3") do |f| %>
+                <h3 class="text-white font-bold mb-3"><%= t('actions.comment.create') %></h3>
+                <%= form_with(model: [@movie, @comment || Comment.new], class: "flex flex-col gap-3") do |f| %>
   
                     <% unless user_signed_in? %>
                     <div class="flex flex-col w-full">
-                        <%= f.label :username, "Seu nome", class: "text-gray-200 mb-1" %>
+                        <%= f.label :username, Comment.human_attribute_name(:username), class: "text-gray-200 mb-1" %>
                         <%= f.text_field :username, class: "w-full p-2 rounded-md bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-sky-400" %>
                         
                         <% if f.object.errors[:username].any? %>
@@ -55,7 +55,7 @@
                     <% end %>
 
                     <div class="flex flex-col">
-                    <%= f.label :content, "Comentário", class: "text-gray-200 mb-1" %>
+                    <%= f.label :content, Comment.human_attribute_name(:content), class: "text-gray-200 mb-1" %>
                     <%= f.text_area :content, rows: 3, class: "w-full p-2 rounded-md bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-sky-400" %>
 
                     <% if f.object.errors[:content].any? %>
@@ -66,11 +66,11 @@
                     </div>
 
                     <div class="flex flex-col">
-                    <%= f.label :rating, "Avaliação", class: "text-gray-200 mb-1" %>
+                    <%= f.label :rating, Comment.human_attribute_name(:rating), class: "text-gray-200 mb-1" %>
                     <%= f.select :rating, options_for_select(1..5), {}, class: "p-2 rounded-md bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-sky-400" %>
                     </div>
 
-                    <%= f.submit "Enviar", class: "mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-2 px-4 rounded-md transition-colors duration-200" %>
+                    <%= f.submit t('actions.send'), class: "mt-2 bg-sky-500 hover:bg-sky-600 text-white font-bold py-2 px-4 rounded-md transition-colors duration-200" %>
 
                     <% end %>
 
@@ -111,7 +111,7 @@
 
             <% else %>
                 <div class="mt-4 p-4 bg-gray-800 rounded-2xl shadow-md text-center font-medium">
-                    Nenhum comentário até o momento.
+                    <%= t('actions.comment.no_comments') %>
                 </div>
 
             <% end %>

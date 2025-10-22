@@ -1,0 +1,23 @@
+pt-BR:
+  time:
+    minute:
+      one: "minuto"
+      other: "minutos"
+  notices:
+    movie:
+      created: 'Comentário enviado com sucesso!'
+  alerts:
+    movie:
+      not_created: 'Erro ao enviar o comentário. Verifique os campos.'
+  activerecord:
+    models:
+      movie:
+        one: 'Comentário'
+        many: 'Comentários'
+    attributes:
+      movie:
+        description: 'Sinopse'
+        technical_details: 'Detalhes Técnicos'
+        director: 'Diretor'
+        category: 'Categoria'
+        tags: 'Tags'

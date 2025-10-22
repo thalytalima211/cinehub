@@ -1,4 +1,8 @@
-pt-BR:
+en:
+  actions:
+    comment:
+      create: 'Let your comment'
+      no_comments: 'No comments yet.'
   notices:
     comment:
       created: 'Comment sent successfully!'
