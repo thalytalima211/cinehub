@@ -46,14 +46,16 @@ gem 'bootsnap', require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-gem "cloudinary"
-gem "activestorage-cloudinary-service"
-gem "dotenv-rails", groups: [:development, :test]
+gem 'activestorage-cloudinary-service'
+gem 'cloudinary'
+gem 'dotenv-rails', groups: %i[development test]
+gem 'image_processing', '~> 1.2'
 
 gem 'simplecov', require: false, group: :test
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem 'cuprite'
   gem 'debug', platforms: %i[mri windows]
   gem 'factory_bot_rails'
   gem 'rspec-rails'
@@ -79,8 +81,8 @@ end
 
 gem 'devise', '~> 4.9'
 
-gem "tailwindcss-ruby", "~> 4.1"
+gem 'tailwindcss-ruby', '~> 4.1'
 
-gem "tailwindcss-rails", "~> 4.3"
+gem 'tailwindcss-rails', '~> 4.3'
 
-gem "pagy", "~> 9.4"
+gem 'pagy', '~> 9.4'

@@ -25,6 +25,7 @@ require 'rspec/rails'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
+require 'capybara/cuprite'
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
 
 # Checks for pending migrations and applies them before tests are run.
@@ -34,7 +35,21 @@ begin
 rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
+
+Capybara.default_max_wait_time = 5
+Capybara.disable_animation = true
+
 RSpec.configure do |config|
+  config.before(:each, type: :system) do
+    driven_by(:cuprite, screen_size: [1440, 810], options: {
+      js_errors: false,
+      headless: %w[0],
+      process_timeout: 15,
+      timeout: 10,
+      browser_options: { "no-sandbox" => nil }
+    })
+  end
+  
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_paths = [
     Rails.root.join('spec/fixtures')
