@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
+  before_action :set_movie
+
   def create
-    @movie = Movie.find(params[:movie_id])
     @comment = @movie.comments.new(comment_params)
     @comment.user = current_user if user_signed_in?
 
@@ -14,6 +15,10 @@ class CommentsController < ApplicationController
   end
 
   private
+
+  def set_movie
+    @movie = Movie.find(params[:movie_id])
+  end
 
   def comment_params
     params.require(:comment).permit(:username, :content, :rating)

@@ -5,8 +5,8 @@ describe 'User comments movie', type: :system do
     movie = create :movie
 
     visit movie_path movie
-    fill_in 'Seu nome', with: 'Fernanda Passos'
-    fill_in 'Comentário', with: 'Adoro esse filme desde criança.'
+    fill_in 'Nome', with: 'Fernanda Passos'
+    fill_in 'Conteúdo', with: 'Adoro esse filme desde criança.'
     within('#comment_rating') { select '4' }
     click_on 'Enviar'
 
@@ -24,7 +24,7 @@ describe 'User comments movie', type: :system do
 
     login_as user
     visit movie_path movie
-    fill_in 'Comentário', with: 'Adoro esse filme desde criança.'
+    fill_in 'Conteúdo', with: 'Adoro esse filme desde criança.'
     within('#comment_rating') { select '4' }
     click_on 'Enviar'
 
@@ -40,8 +40,8 @@ describe 'User comments movie', type: :system do
     movie = create :movie
 
     visit movie_path movie
-    fill_in 'Seu nome', with: ''
-    fill_in 'Comentário', with: ''
+    fill_in 'Nome', with: ''
+    fill_in 'Conteúdo', with: ''
     click_on 'Enviar'
 
     expect(page).to have_content 'Erro ao enviar o comentário. Verifique os campos.'
