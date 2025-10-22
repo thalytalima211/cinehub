@@ -6,9 +6,11 @@ require "rails/all"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+
 module Cinehub
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml')]
     config.load_defaults 7.1
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do

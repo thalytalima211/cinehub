@@ -1,0 +1,17 @@
+pt-BR:
+  notices:
+    comment:
+      created: 'Comment sent successfully!'
+  alerts:
+    comment:
+      not_created: 'Error sending comment. Please check the fields.'
+  activerecord:
+    models:
+      comment:
+        one: 'Comment'
+        many: 'Comments'
+    attributes:
+      comment:
+        username: 'Name'
+        content: 'Content'
+        rating: 'Rating'

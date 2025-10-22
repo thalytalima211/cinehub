@@ -1,0 +1,17 @@
+pt-BR:
+  notices:
+    comment:
+      created: 'Comentário enviado com sucesso!'
+  alerts:
+    comment:
+      not_created: 'Erro ao enviar o comentário. Verifique os campos.'
+  activerecord:
+    models:
+      comment:
+        one: 'Comentário'
+        many: 'Comentários'
+    attributes:
+      comment:
+        username: 'Nome'
+        content: 'Conteúdo'
+        rating: 'Avaliação'

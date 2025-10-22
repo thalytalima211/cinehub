@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :tagt do
+  factory :tag do
     name { 'Inspirado em fatos reais' }
   end
 end

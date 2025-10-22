@@ -5,6 +5,7 @@ class Movie < ApplicationRecord
 
   has_one_attached :poster
   has_many :comments, dependent: :destroy
+  has_many :movie_tags, dependent: :destroy
   has_many :tags, through: :movie_tags
 
   validates :title, :description, :release_year, :duration, presence: true

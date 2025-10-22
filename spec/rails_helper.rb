@@ -40,6 +40,7 @@ Capybara.default_max_wait_time = 5
 Capybara.disable_animation = true
 
 RSpec.configure do |config|
+  config.include Warden::Test::Helpers
   config.before(:each, type: :system) do
     driven_by(:cuprite, screen_size: [1440, 810], options: {
       js_errors: false,
@@ -49,7 +50,7 @@ RSpec.configure do |config|
       browser_options: { "no-sandbox" => nil }
     })
   end
-  
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_paths = [
     Rails.root.join('spec/fixtures')
