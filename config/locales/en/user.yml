@@ -1,0 +1,11 @@
+en:
+  messages:
+    user:
+      not_saved: 'Unable to complete registration'
+  activerecord:
+    models:
+      user:
+        one: 'User'
+    attributes:
+      user:
+        name: 'Name'

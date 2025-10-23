@@ -2,3 +2,13 @@ en:
   actions:
     return_homepage: 'Return to home page'
     send: 'Send'
+    login: 'Login'
+    login_message: 'Log into your account'
+    sign_up: 'Register'
+    logout: 'Logout'
+  devise:
+    sign_up: 'Create an account'
+    forgot_password: 'Forgot your password?'
+    registrations:
+      minimum_characters: 'mininum characters'
+    send_reset_instructions: "Send reset instructions"

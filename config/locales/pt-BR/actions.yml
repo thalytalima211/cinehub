@@ -2,3 +2,15 @@ pt-BR:
   actions:
     return_homepage: 'Voltar para a página inicial'
     send: 'Enviar'
+    login: 'Entrar'
+    login_message: 'Entre na sua conta'
+    sign_up: 'Cadastrar-se'
+    logout: 'Sair'
+  devise:
+    sign_up: 'Criar uma conta'
+    forgot_password: 'Esqueceu sua senha?'
+    registrations:
+      minimum_characters: 'caracteres no mínimo'
+    send_reset_instructions: "Enviar instruções de redefinição"
+    
+  

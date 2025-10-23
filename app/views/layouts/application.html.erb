@@ -18,26 +18,52 @@
   <body class="bg-gray-500 flex flex-col h-screen">
     <nav class="mt-4 py-5 bg-gray-800 flex">
       <div class="w-3/4 mx-auto flex justify-between">
-        <p class="text-4xl text-sky-400 font-bold">CineHub</p>
-        <div data-controller="locale" class="relative inline-block text-left">
-          <button data-action="click->locale#toggle"
-                  data-locale-target="button"
-                  class="inline-flex justify-center w-full rounded-md bg-gray-700 px-4 py-2 text-sm font-medium text-gray-200 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-sky-400">
-            <%= I18n.locale == :'pt-BR' ? "🇧🇷 Português" : "🇺🇸 English" %>
-            <i class="fa-solid fa-chevron-down ml-2"></i>
-          </button>
+        <%= link_to 'CineHub', root_path, class: "text-4xl text-sky-400 font-bold"%>
+        <div class="flex">
+          <% if user_signed_in? %>
+            <div class="flex items-center gap-3 mr-2">
+              <% if current_user.profile_picture.attached? %>
+                <%= image_tag current_user.profile_picture.variant(resize_to_fill: [40, 40]),
+                    class: "rounded-full w-10 h-10 object-cover border-2" %>
+              <% else %>
+                <%= image_tag "profile_generic.png",
+                    class: "rounded-full w-10 h-10 object-cover border-2" %>
+              <% end %>
 
-          <div data-locale-target="dropdown" class="hidden absolute right-0 mt-2 w-40 bg-gray-800 rounded-md shadow-lg z-50">
-            <a href="#" data-action="click->locale#select" data-locale="pt-BR"
-              class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-700">
-              🇧🇷 Português
-            </a>
-            <a href="#" data-action="click->locale#select" data-locale="en"
-              class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-700">
-              🇺🇸 English
-            </a>
+              <span class="text-gray-200 font-medium text-lg">
+                <%= current_user.name || current_user.email.split('@').first.capitalize %>
+              </span>
+
+              <%= button_to t('actions.logout'),
+                  destroy_user_session_path,
+                  method: :delete, data: { turbo: false },
+                  class: "text-white bg-gray-700 px-4 py-2 rounded-md transition-transform transform hover:scale-108 font-semibold" %>
+            </div>
+          <% else %>
+            <%= link_to t('actions.login'), new_user_session_path,
+            class: 'text-sky-400 bg-gray-700 px-6 py-2 rounded-md mr-3 transition-all hover:scale-107 font-medium text-xl'%>
+          <% end %>
+          <div data-controller="locale" class="relative inline-block text-left my-auto">
+            <button data-action="click->locale#toggle"
+                    data-locale-target="button"
+                    class="inline-flex justify-center w-full rounded-md bg-gray-700 px-4 py-2 text-sm font-medium text-gray-200 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-sky-400">
+              <%= I18n.locale == :'pt-BR' ? "🇧🇷 Português" : "🇺🇸 English" %>
+              <i class="fa-solid fa-chevron-down ml-2"></i>
+            </button>
+
+            <div data-locale-target="dropdown" class="hidden absolute right-0 mt-2 w-40 bg-gray-800 rounded-md shadow-lg z-50">
+              <a href="#" data-action="click->locale#select" data-locale="pt-BR"
+                class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-700">
+                🇧🇷 Português
+              </a>
+              <a href="#" data-action="click->locale#select" data-locale="en"
+                class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-700">
+                🇺🇸 English
+              </a>
+            </div>
           </div>
         </div>
+        
       </div>
     </nav>
     <% if notice %>

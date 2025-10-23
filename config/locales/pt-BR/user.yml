@@ -1,0 +1,11 @@
+pt-BR:
+  messages:
+    user:
+      not_saved: 'Não foi possível concluir o cadastro'
+  activerecord:
+    models:
+      user:
+        one: 'Usuário'
+    attributes:
+      user:
+        name: 'Nome'
