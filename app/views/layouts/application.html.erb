@@ -22,18 +22,19 @@
         <div class="flex">
           <% if user_signed_in? %>
             <div class="flex items-center gap-3 mr-2">
-              <% if current_user.profile_picture.attached? %>
-                <%= image_tag current_user.profile_picture.variant(resize_to_fill: [40, 40]),
-                    class: "rounded-full w-10 h-10 object-cover border-2" %>
-              <% else %>
-                <%= image_tag "profile_generic.png",
-                    class: "rounded-full w-10 h-10 object-cover border-2" %>
+              <%= link_to profile_path, class: 'transition hover:scale-108 flex items-center gap-2 mr-2' do %>
+                <% if current_user.profile_picture.attached? %>
+                  <%= image_tag current_user.profile_picture.variant(resize_to_fill: [40, 40]),
+                      class: "rounded-full w-10 h-10 object-cover border-2" %>
+                <% else %>
+                  <%= image_tag "profile_generic.png",
+                      class: "rounded-full w-10 h-10 object-cover border-2" %>
+                <% end %>
+
+                <span class="text-gray-200 font-medium text-lg">
+                  <%= current_user.name || current_user.email.split('@').first.capitalize %>
+                </span>
               <% end %>
-
-              <span class="text-gray-200 font-medium text-lg">
-                <%= current_user.name || current_user.email.split('@').first.capitalize %>
-              </span>
-
               <%= button_to t('actions.logout'),
                   destroy_user_session_path,
                   method: :delete, data: { turbo: false },
@@ -86,7 +87,7 @@
       </div>
     <% end %>
     
-    <main class="container mx-auto mt-6 w-3/4 flex">
+    <main class="container mx-auto w-3/4 flex">
       <%= yield %>
     </main>
   </body>

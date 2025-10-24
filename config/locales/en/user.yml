@@ -1,7 +1,19 @@
 en:
+  actions:
+    user:
+      edit_profile: 'Update profile'
+      update_profile_picture: 'Update profile picture'
+      update_password: 'Update password'
   messages:
     user:
       not_saved: 'Unable to complete registration'
+  notices:
+    user:
+      updated: 'Profile updated successfully!'
+      password_updated: 'Password changed successfully!'
+  alerts:
+    user:
+      not_updated: 'Error updating profile. Check the fields.'
   activerecord:
     models:
       user:
@@ -9,3 +21,9 @@ en:
     attributes:
       user:
         name: 'Name'
+        email: 'Email'
+        current_password: 'Current password'
+        password: 'Password'
+        new_password: 'New password'
+        password_confirmation: 'Confirm your password'
+        my_movies: 'My registered movies'

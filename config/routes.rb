@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   resources :movies, only: [:show, :new, :create] do
     resources :comments, only: [:create]
   end
+
+  resource :profile, only: [:show, :update]
   # Defines the root path route ("/")
   # root "posts#index"
 end

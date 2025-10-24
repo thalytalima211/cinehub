@@ -1,7 +1,19 @@
 pt-BR:
+  actions:
+    user:
+      edit_profile: 'Editar Perfil'
+      update_profile_picture: 'Atualizar Foto'
+      update_password: 'Atualizar senha'
   messages:
     user:
       not_saved: 'Não foi possível concluir o cadastro'
+  notices:
+    user:
+      updated: 'Perfil atualizado com sucesso!'
+      password_updated: 'Senha alterada com sucesso!'
+  alerts:
+    user:
+      not_updated: 'Erro ao atualizar perfil. Verifique os campos.'
   activerecord:
     models:
       user:
@@ -9,3 +21,9 @@ pt-BR:
     attributes:
       user:
         name: 'Nome'
+        email: 'E-mail'
+        current_password: 'Senha atual'
+        password: 'Senha'
+        new_password: 'Nova senha'
+        password_confirmation: 'Confirme sua senha'
+        my_movies: 'Meus filmes cadastrados'
