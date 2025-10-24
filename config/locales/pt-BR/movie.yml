@@ -3,12 +3,26 @@ pt-BR:
     minute:
       one: "minuto"
       other: "minutos"
+  actions:
+    movie:
+      register: 'Cadastrar novo filme'
+      no_movies: 'Nenhum filme encontrado.'
+  forms:
+    movie:
+      director_placeholder: 'Digite o nome do diretor...'
+      category_select: 'Selecione uma categoria'
+      tags_placeholder: 'Digite para encontrar uma tag...'
+      duration_placeholder: 'Digite a duração do filme...'
+      release_year_placeholder: 'Digite o ano de lançamento do filme...'
+      description_placeholder: 'Digite a sinopse do filme...'
+      title_placeholder: 'Digite o título do filme...'
+      poster_placeholder: 'Clique ou arraste para enviar o poster'
   notices:
     movie:
-      created: 'Comentário enviado com sucesso!'
+      created: 'Filme cadastrado com sucesso'
   alerts:
     movie:
-      not_created: 'Erro ao enviar o comentário. Verifique os campos.'
+      not_created: 'Erro ao cadastrar o filme. Verifique os campos.'
   activerecord:
     models:
       movie:
@@ -21,3 +35,8 @@ pt-BR:
         director: 'Diretor'
         category: 'Categoria'
         tags: 'Tags'
+        title: 'Título'
+        release_year: 'Ano de Lançamento'
+        duration: 'Duração'
+        duration_field: 'Duração (em minutos)'
+        poster: 'Poster do filme'

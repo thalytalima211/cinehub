@@ -6,6 +6,7 @@ en:
     login_message: 'Log into your account'
     sign_up: 'Register'
     logout: 'Logout'
+    register: 'Register'
   devise:
     sign_up: 'Create an account'
     forgot_password: 'Forgot your password?'

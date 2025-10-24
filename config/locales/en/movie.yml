@@ -3,12 +3,26 @@ en:
     minute:
       one: "minute"
       other: "minutes"
+  actions:
+    movie:
+      register: 'Register new movie'
+      no_movies: 'No movies yet.'
+  forms:
+    movie:
+      director_placeholder: "Enter the director's name..."
+      category_select: 'Select a category'
+      tags_placeholder: 'Type to find a tag...'
+      duration_placeholder: 'Enter the duration of the movie...'
+      release_year_placeholder: 'Enter the year the movie was released...'
+      description_placeholder: 'Enter the movie synopsis...'
+      title_placeholder: 'Enter the movie title...'
+      poster_placeholder: 'Click or drag to upload the poster'
   notices:
     movie:
-      created: ''
+      created: 'Film registered successfully'
   alerts:
     movie:
-      not_created: ''
+      not_created: 'Error registering the film. Please check the fields.'
   activerecord:
     models:
       movie:
@@ -21,3 +35,8 @@ en:
         director: 'Director'
         category: 'Category'
         tags: 'Tags'
+        title: 'Title'
+        release_year: 'Release Year'
+        duration: 'Duration'
+        duration_field: 'Duration (in minutes)'
+        poster: 'Movie poster'

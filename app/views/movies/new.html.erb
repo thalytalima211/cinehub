@@ -1,0 +1,156 @@
+<section class="flex flex-col w-full">
+    <%= link_to t('actions.return_homepage'), root_path,
+            class: "px-5 py-2 rounded-lg bg-gray-800 w-fit text-white
+                font-medium hover:bg-gray-700 transition-colors duration-300 
+                shadow-md hover:shadow-lg transform hover:-translate-y-0.5" %>
+
+    <div class="bg-gray-800 w-3/4 mx-auto rounded-md p-8 shadow-md mb-8 mt-4">
+        <h1 class="text-3xl font-bold text-center text-sky-400 mb-6">
+            <%= t('actions.movie.register') %>
+        </h1>
+
+        <%= form_with(model: @movie, local: true, html: { class: "space-y-4" }) do |f| %>
+            <div class="flex gap-x-5">
+                <div data-controller="poster-preview" class="flex flex-col mb-6 w-2/5">
+                    <%= f.label :poster, Movie.human_attribute_name(:poster), class: "text-gray-200 font-medium mb-1" %>
+
+                    <div class="relative h-full min-h-full border-2 border-dashed border-gray-600 rounded-md p-2 flex flex-col items-center justify-center cursor-pointer hover:border-sky-400 transition">
+                        <%= f.file_field :poster, 
+                            accept: "image/*",
+                            data: { "poster-preview-target": "input", action: "change->poster-preview#preview" },
+                            class: "absolute inset-0 w-full h-full opacity-0 cursor-pointer" %>
+
+                        <div id="poster-preview" class="flex flex-col items-center gap-2">
+                        <svg data-poster-preview-target="icon" class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v4a1 1 0 001 1h16a1 1 0 001-1V7M3 7l9 7 9-7M3 7v12a1 1 0 001 1h16a1 1 0 001-1V7" />
+                        </svg>
+                        <span data-poster-preview-target="instructions" class="text-gray-400 text-sm"><%= t('forms.movie.poster_placeholder')%></span>
+                        <img data-poster-preview-target="image" class="hidden max-h-48 rounded-md mt-2" />
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col w-3/5 gap-y-4">
+                    <div class="flex flex-col">
+                        <%= f.label :title, Movie.human_attribute_name(:title), class: "text-gray-200 font-medium mb-1" %>
+                        <%= f.text_field :title, placeholder: t('forms.movie.title_placeholder'),
+                            class: "p-3 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-sky-400" %>
+                        <% if f.object.errors[:title].any? %>
+                            <p class="text-sm text-red-500 mt-1"><%= f.object.errors.full_messages_for(:title).join(', ') %></p>
+                        <% end %>
+                    </div>
+
+                    <div class="flex flex-col">
+                        <%= f.label :description, Movie.human_attribute_name(:description), class: "text-gray-200 font-medium mb-1" %>
+                        <%= f.text_area :description, rows: 4, placeholder: t('forms.movie.description_placeholder'),
+                            class: "p-3 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-sky-400" %>
+                        <% if f.object.errors[:description].any? %>
+                            <p class="text-sm text-red-500 mt-1"><%= f.object.errors.full_messages_for(:description).join(', ') %></p>
+                        <% end %>
+                    </div>
+
+                    <div class="flex flex-col">
+                        <%= f.label :release_year, Movie.human_attribute_name(:release_year), class: "text-gray-200 font-medium mb-1" %>
+                        <%= f.number_field :release_year, placeholder: t('forms.movie.release_year_placeholder'),
+                            class: "p-3 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-sky-400" %>
+                        <% if f.object.errors[:release_year].any? %>
+                            <p class="text-sm text-red-500 mt-1"><%= f.object.errors.full_messages_for(:release_year).join(', ') %></p>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex flex-col mb-4">
+                <%= f.label :duration, Movie.human_attribute_name(:duration_field), class: "text-gray-200 font-medium mb-1" %>
+                <%= f.number_field :duration, placeholder: t('forms.movie.duration_placeholder'),
+                    class: "p-3 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-sky-400" %>
+                <% if f.object.errors[:duration].any? %>
+                    <p class="text-sm text-red-500 mt-1"><%= f.object.errors.full_messages_for(:duration).join(', ') %></p>
+                <% end %>
+            </div>
+
+            <div data-controller="select-suggestions" 
+                data-select-suggestions-multiple-value="false"
+                data-action="click@document->select-suggestions#hideIfOutside"
+                class="flex flex-col mb-4 relative">
+                <%= f.label :director, Movie.human_attribute_name(:director), class: "text-gray-200 font-medium mb-1" %>
+
+                <%= f.text_field :director, value: @movie.director&.name,
+                    placeholder: t('forms.movie.director_placeholder'), 
+                    data: { "select-suggestions-target": "search",
+                        action: "input->select-suggestions#filter"},
+                    class: "p-3 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-sky-400"%>
+
+                <ul data-select-suggestions-target="suggestions"
+                    class="absolute left-0 top-full mt-1 z-50 bg-gray-700 rounded-md shadow-md max-h-40 overflow-y-auto hidden w-full">
+                    <% @directors.each do |director| %>
+                    <li data-id="<%= director.id %>"
+                        data-select-suggestions-target="item"
+                        data-action="click->select-suggestions#select"
+                        class="p-2 hover:bg-sky-600 cursor-pointer text-gray-200">
+                        <%= director.name %>
+                    </li>
+                    <% end %>
+                </ul>
+
+                <%= f.hidden_field :director_id, data: { "select-suggestions-target": "hidden" } %>
+
+                <% if f.object.errors[:director].any? %>
+                    <p class="text-sm text-red-500 mt-1"><%= f.object.errors.full_messages_for(:director).join(', ') %></p>
+                <% end %>
+            </div>
+
+            <div class="flex flex-col mb-4">
+                <%= f.label :category_id, Movie.human_attribute_name(:category), class: "text-gray-200 font-medium mb-1" %>
+                <div class="relative">
+                    <%= f.select :category_id,
+                        @categories.map { |c| [c.name, c.id] },
+                        { prompt: t('forms.movie.category_select') },
+                        class: "appearance-none w-full p-3 pr-10 rounded-md bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-sky-400 cursor-pointer" %>
+
+                    <svg class="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </div>
+
+                <% if f.object.errors[:category].any? %>
+                    <p class="text-sm text-red-500 mt-1"><%= f.object.errors.full_messages_for(:category).join(', ') %></p>
+                <% end %>
+            </div>
+
+            <div data-controller="select-suggestions" 
+                data-select-suggestions-multiple-value="true"
+                data-action="click@document->select-suggestions#hideIfOutside"
+                class="flex flex-col mb-4 relative">
+                <%= f.label :tag_ids, Movie.human_attribute_name(:tags), for: "movie_tag_ids_input", class: "text-gray-200 font-medium mb-1" %>
+
+                <input type="text" placeholder="<%= t('forms.movie.tags_placeholder')%>" id="movie_tag_ids_input"
+                    data-select-suggestions-target="search"
+                    data-action="input->select-suggestions#filter"
+                    class="p-3 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-sky-400">
+
+                <ul data-select-suggestions-target="suggestions" id="tag_suggestions"
+                    class="absolute left-0 top-full mt-1 z-50 bg-gray-700 rounded-md shadow-md max-h-40 overflow-y-auto hidden w-full">
+
+                    <% Tag.all.each do |tag| %>
+                        <li data-id="<%= tag.id %>"
+                            data-select-suggestions-target="item"
+                            data-action="click->select-suggestions#select"
+                            class="p-2 hover:bg-sky-600 cursor-pointer text-gray-200">
+                            <%= tag.name %>
+                        </li>
+                    <% end %>
+                </ul>
+
+                <div data-select-suggestions-target="selected" class="flex flex-wrap gap-2 mt-3"></div>
+
+                <input type="hidden" name="movie[tag_ids][]" data-select-suggestions-target="hidden">
+            </div>
+
+            <div class="flex justify-center">
+                <%= f.submit t('actions.register'), class: "bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" %>
+            </div>
+        <% end %>
+    </div>
+</section>

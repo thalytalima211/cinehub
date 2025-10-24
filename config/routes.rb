@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   root to: "home#index"
 
-  resources :movies, only: [:show] do
+  resources :movies, only: [:show, :new, :create] do
     resources :comments, only: [:create]
   end
   # Defines the root path route ("/")
