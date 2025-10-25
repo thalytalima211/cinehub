@@ -3,6 +3,7 @@
 set -o errexit
 
 bundle install
+bin/rails assets:clobber
 bin/rails assets:precompile
 
 bin/rails db:migrate
