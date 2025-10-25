@@ -11,6 +11,7 @@ pt-BR:
     update: 'Editar'
     delete: 'Excluir'
     cancel: 'Cancelar'
+    apply: 'Aplicar'
     see_details: 'Ver detalhes'
   devise:
     sign_up: 'Criar uma conta'

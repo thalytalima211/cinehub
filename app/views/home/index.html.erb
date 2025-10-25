@@ -1,7 +1,50 @@
-<section class="flex flex-col">
+<section class="flex flex-col w-full mb-6">
     <% if user_signed_in? %>
         <%= link_to t('actions.movie.register'), new_movie_path, class: 'mt-4 w-fit bg-[#1E2939] text-white font-medium p-3 rounded-md ml-auto mb-4 transition hover:scale-105' %>
     <% end %>
+
+    <section id='search-movie' class="flex flex-col bg-gray-800 p-6 rounded-md shadow-md mb-6">
+        <h2 class="text-xl font-bold text-sky-400 mb-4"><%= t('actions.movie.filter_movies') %></h2>
+
+        <%= form_with url: root_path, method: :get, local: true, class: "flex flex-col md:flex-row gap-4" do %>
+            <%= text_field_tag :search, params[:search],
+                    placeholder: t('forms.movie.search_placeholder'),
+                    class: "flex-1 p-3 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-sky-400 transition" %>
+
+            <div class='relative'>
+                <%= select_tag :year, options_for_select((1895..Date.current.year).to_a.reverse, params[:year]),
+                        include_blank: Movie.human_attribute_name(:release_year),
+                        class: "appearance-none w-full p-3 pr-10 rounded-md bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-sky-400 cursor-pointer" %>
+                <svg class="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none"
+                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+            </div>
+
+            <div class='relative'>
+                <%= select_tag :category, options_from_collection_for_select(@categories, :id, :name, params[:category]),
+                        include_blank: Movie.human_attribute_name(:category),
+                        class: "appearance-none w-full p-3 pr-10 rounded-md bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-sky-400 cursor-pointer" %>
+                <svg class="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none"
+                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+            </div>
+
+            <div class='relative'>
+                <%= select_tag :director, options_from_collection_for_select(@directors, :id, :name, params[:director]),
+                        include_blank: Movie.human_attribute_name(:director),
+                        class: "appearance-none w-full p-3 pr-10 rounded-md bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-sky-400 cursor-pointer" %>
+                <svg class="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none"
+                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+            </div>
+
+            <%= submit_tag t('actions.apply'),
+                    class: "bg-sky-500 hover:bg-sky-600 text-white font-bold px-4 py-2 rounded-md transition-transform transform hover:-translate-y-0.5 hover:shadow-lg" %>
+        <% end %>
+    </section>
     <% if @movies.any? %>
         <turbo-frame id="movies" class="w-full">
             <div id="movies-grid" class="grid grid-cols-3 gap-x-3 gap-y-5">
@@ -28,7 +71,7 @@
             </div>
         </turbo-frame>
     <% else %>
-        <p class="w-full text-center text-white bg-[#1E2939] py-4 rounded-lg mt-6 font-medium">
+        <p class="w-full text-center text-white bg-[#1E2939] py-4 rounded-lg mt-2 font-medium">
             <%= t('actions.movie.no_movies') %>
         </p>
     <% end %>

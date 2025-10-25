@@ -22,6 +22,19 @@ class Movie < ApplicationRecord
     less_than_or_equal_to: 600
   }
 
+  scope :by_search, lambda { |q|
+    return all if q.blank?
+
+    joins(:director).where(
+      'movies.title ILIKE :q OR movies.release_year::text ILIKE :q OR directors.name ILIKE :q',
+      q: "%#{q}%"
+    )
+  }
+
+  scope :by_year, ->(year) { where(release_year: year) if year.present? }
+  scope :by_category, ->(category_id) { where(category_id: category_id) if category_id.present? }
+  scope :by_director, ->(director_id) { where(director_id: director_id) if director_id.present? }
+
   def update_average_rating!
     avg = comments.where.not(rating: nil).average(:rating)
     update!(average_rating: avg || 0)

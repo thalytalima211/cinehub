@@ -8,6 +8,7 @@ pt-BR:
       register: 'Cadastrar novo filme'
       no_movies: 'Nenhum filme encontrado.'
       update: 'Editar filme'
+      filter_movies: 'Filtrar Filmes'
       confirm_delete: 'Confirmar exclusão'
       confirm_delete_message: 'Tem certeza que deseja excluir este filme? Essa ação não pode ser desfeita.'
   forms:
@@ -20,6 +21,7 @@ pt-BR:
       description_placeholder: 'Digite a sinopse do filme...'
       title_placeholder: 'Digite o título do filme...'
       poster_placeholder: 'Clique ou arraste para enviar o poster'
+      search_placeholder: 'Pesquisar por ano, título ou diretor'
   notices:
     movie:
       created: 'Filme cadastrado com sucesso'

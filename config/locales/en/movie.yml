@@ -7,7 +7,8 @@ en:
     movie:
       register: 'Register new movie'
       no_movies: 'No movies yet.'
-      edit: 'Update movie'
+      update: 'Update movie'
+      filter_movies: 'Filter movies'
       confirm_delete: 'Confirm deletion'
       confirm_delete_message: 'Are you sure you want to delete this movie? This action cannot be undone.'
   forms:
@@ -20,6 +21,7 @@ en:
       description_placeholder: 'Enter the movie synopsis...'
       title_placeholder: 'Enter the movie title...'
       poster_placeholder: 'Click or drag to upload the poster'
+      search_placeholder: 'Search by year, title, or director'
   notices:
     movie:
       created: 'Film registered successfully'

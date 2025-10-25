@@ -11,6 +11,7 @@ en:
     update: 'Update'
     delete: 'Delete'
     cancel: 'Cancel'
+    apply: 'Apply'
     see_details: 'See details'
   devise:
     sign_up: 'Create an account'
