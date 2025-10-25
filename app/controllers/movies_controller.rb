@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-  before_action :authenticate_user!, only: %i[new create edit update]
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
   before_action :set_collections, only: %i[new create edit update]
   before_action :check_owner, only: %i[edit update]
 
@@ -40,6 +40,17 @@ class MoviesController < ApplicationController
   rescue ActiveRecord::RecordInvalid
     flash.now[:alert] = t('alerts.movie.not_updated')
     render :edit, status: :unprocessable_content
+  end
+
+  def destroy
+    set_movie
+
+    if @movie.user == current_user
+      @movie.destroy
+      redirect_to profile_path, notice: t('notices.movie.deleted')
+    else
+      redirect_to root_path, alert: t('alerts.movie.delete_not_allowed')
+    end
   end
 
   private

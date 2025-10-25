@@ -10,6 +10,7 @@ en:
     register: 'Register'
     update: 'Update'
     delete: 'Delete'
+    cancel: 'Cancel'
     see_details: 'See details'
   devise:
     sign_up: 'Create an account'

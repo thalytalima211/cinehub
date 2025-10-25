@@ -8,6 +8,8 @@ pt-BR:
       register: 'Cadastrar novo filme'
       no_movies: 'Nenhum filme encontrado.'
       update: 'Editar filme'
+      confirm_delete: 'Confirmar exclusão'
+      confirm_delete_message: 'Tem certeza que deseja excluir este filme? Essa ação não pode ser desfeita.'
   forms:
     movie:
       director_placeholder: 'Digite o nome do diretor...'
@@ -22,11 +24,13 @@ pt-BR:
     movie:
       created: 'Filme cadastrado com sucesso'
       updated: 'Filme editado com sucesso'
+      deleted: 'Filme excluído com sucesso'
   alerts:
     movie:
       not_created: 'Erro ao cadastrar o filme. Verifique os campos.'
       not_updated: 'Erro ao editar o filme. Verifique os campos.'
       update_not_allowed: 'Você não pode editar esse filme'
+      delete_not_allowed: 'Você não tem permissão para excluir este filme.'
   activerecord:
     models:
       movie:
