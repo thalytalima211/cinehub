@@ -27,3 +27,4 @@ en:
         new_password: 'New password'
         password_confirmation: 'Confirm your password'
         my_movies: 'My registered movies'
+        remember_me: 'Remember me'
