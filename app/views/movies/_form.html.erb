@@ -158,6 +158,6 @@
     </div>
 
     <div class="flex justify-center">
-        <%= f.submit t('actions.register'), class: "bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" %>
+        <%= f.submit action_name == 'new' ? t('actions.register') : t('actions.update'), class: "bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" %>
     </div>
 <% end %>

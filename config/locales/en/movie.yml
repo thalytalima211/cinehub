@@ -26,7 +26,7 @@ en:
     movie:
       created: 'Film registered successfully'
       updated: 'Film updated successfully'
-      updated: 'Film deleted successfully'
+      deleted: 'Film deleted successfully'
   alerts:
     movie:
       not_created: 'Error registering the film. Please check the fields.'

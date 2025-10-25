@@ -22,7 +22,7 @@ describe 'User edits movie', type: :system do
       find('#tag_suggestions li', text: 'Comédia leve').click
       fill_in 'Tags', with: 'Am'
       find('#tag_suggestions li', text: 'Amizade').click
-      click_on 'Cadastrar'
+      click_on 'Editar'
 
       expect(page).to have_content 'Filme editado com sucesso'
       expect(current_path).to eq movie_path movie
@@ -46,7 +46,7 @@ describe 'User edits movie', type: :system do
       fill_in 'Ano de Lançamento', with: ''
       fill_in 'Duração (em minutos)', with: ''
       fill_in 'Diretor', with: ''
-      click_on 'Cadastrar'
+      click_on 'Editar'
 
       expect(page).to have_content 'Erro ao editar o filme. Verifique os campos.'
       expect(page).to have_content 'Título não pode ficar em branco'
