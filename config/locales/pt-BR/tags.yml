@@ -1,0 +1,25 @@
+pt-BR:
+  actions:
+      tag:
+        no_tag: 'Nenhuma tag'
+  tags:
+    "Viagem no tempo": "Viagem no tempo"
+    "Amor": "Amor"
+    "Amizade": "Amizade"
+    "Comédia leve": "Comédia leve"
+    "Aventura épica": "Aventura épica"
+    "Ficção científica": "Ficção científica"
+    "Drama familiar": "Drama familiar"
+    "Suspense psicológico": "Suspense psicológico"
+    "Fantasia medieval": "Fantasia medieval"
+    "Crime organizado": "Crime organizado"
+    "Superpoderes": "Superpoderes"
+    "Distopia": "Distopia"
+    "Viagem espacial": "Viagem espacial"
+    "Mistério": "Mistério"
+    "Guerra": "GuerraWar"
+    "História real": "História real"
+    "Amor proibido": "Amor proibido"
+    "Investigação": "Investigação"
+    "Inteligência artificial": "Inteligência artificial"
+    "Ritual secreto": "Ritual secreto"

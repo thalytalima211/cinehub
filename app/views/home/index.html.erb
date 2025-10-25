@@ -1,4 +1,4 @@
-<section class="flex flex-col w-full mb-6">
+<section class="flex flex-col w-full mt-4 mb-6">
     <% if user_signed_in? %>
         <%= link_to t('actions.movie.register'), new_movie_path, class: 'mt-4 w-fit bg-[#1E2939] text-white font-medium p-3 rounded-md ml-auto mb-4 transition hover:scale-105' %>
     <% end %>
@@ -22,7 +22,7 @@
             </div>
 
             <div class='relative'>
-                <%= select_tag :category, options_from_collection_for_select(@categories, :id, :name, params[:category]),
+                <%= select_tag :category, options_from_collection_for_select(@categories, :id, ->(category) { t("categories.#{category.name}") }, params[:category]),
                         include_blank: Movie.human_attribute_name(:category),
                         class: "appearance-none w-full p-3 pr-10 rounded-md bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-sky-400 cursor-pointer" %>
                 <svg class="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none"

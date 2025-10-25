@@ -30,8 +30,8 @@
 
             <p class="text-2xl font-bold mt-2"><%= Movie.human_attribute_name(:technical_details) %></p>
             <p><span class="font-medium"><%= Movie.human_attribute_name(:director) %>: </span><%= @movie.director.name %></p>
-            <p><span class="font-medium"><%= Movie.human_attribute_name(:category) %>: </span><%= @movie.category.name %></p>
-            <p><span class="font-medium"><%= Movie.human_attribute_name(:tags) %>: </span><%= @movie.tags.any? ? @movie.tags.pluck(:name).join(', ') : 'Nenhuma tag' %></p>
+            <p><span class="font-medium"><%= Movie.human_attribute_name(:category) %>: </span><%= t("categories.#{@movie.category.name}") %></p>
+            <p><span class="font-medium"><%= Movie.human_attribute_name(:tags) %>: </span><%= @movie.tags.any? ? @movie.tags.map { |tag| t("tags.#{tag.name}") }.join(', ') : t('actions.tag.no_tags') %></p>
         </div>
 
         <div class="mt-3 flex flex-col mb-6">

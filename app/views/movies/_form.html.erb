@@ -100,7 +100,7 @@
         <%= f.label :category_id, Movie.human_attribute_name(:category), class: "text-gray-200 font-medium mb-1" %>
         <div class="relative">
             <%= f.select :category_id,
-                @categories.map { |c| [c.name, c.id] },
+                @categories.map { |c| [t("categories.#{c.name}"), c.id] },
                 { prompt: t('forms.movie.category_select') },
                 class: "appearance-none w-full p-3 pr-10 rounded-md bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-sky-400 cursor-pointer" %>
 
@@ -134,7 +134,7 @@
                     data-select-suggestions-target="item"
                     data-action="click->select-suggestions#select"
                     class="p-2 hover:bg-sky-600 cursor-pointer text-gray-200">
-                    <%= tag.name %>
+                    <%= t("tags.#{tag.name}") %>
                 </li>
             <% end %>
         </ul>
