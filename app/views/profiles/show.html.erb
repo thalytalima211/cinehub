@@ -1,12 +1,12 @@
 <div class='flex flex-col w-full'>
-<section id='profile-section' class="bg-gray-800 w-3/4 mx-auto rounded-md p-8 shadow-md my-8 flex flex-col">
+<section id='profile-section' class="bg-gray-800 w-full md:w-3/4 mx-auto rounded-md p-8 shadow-md my-8 flex flex-col">
   <div>
     <h2 class="text-xl font-bold text-center text-sky-400 mb-6">
       <%= t('actions.user.edit_profile')%>
     </h2>
 
-    <div class='flex'>
-      <div class="w-2/5 mx-auto flex flex-col items-center text-center" data-controller="profile-picture-preview">
+    <div class='flex flex-col lg:flex-row'>
+      <div class="w-full md:w-2/5 mx-auto mb-2 md:mb-0 flex flex-col items-center text-center" data-controller="profile-picture-preview">
       <div class="relative w-fit mx-auto">
         <% if @user.profile_picture.attached? %>
           <%= image_tag @user.profile_picture.variant(resize_to_fill: [170, 170]),
@@ -41,11 +41,11 @@
     </div>
 
 
-      <div class='w-3/5'>
+      <div class='w-full min-w-full md:w-3/5'>
         <%= form_with(model: @user, url: profile_path, method: :patch) do |f| %>
           <%= hidden_field_tag :update_type, "profile" %>
 
-          <div class="flex flex-col mb-4">
+          <div class="flex flex-col mb-4 w-full">
             <%= f.label :name, User.human_attribute_name(:name), class: "text-gray-200 font-medium mb-1" %>
             <%= f.text_field :name,
               class: "p-3 rounded-md bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-sky-400" %>
@@ -54,7 +54,7 @@
             <% end %>
           </div>
 
-          <div class="flex flex-col mb-4">
+          <div class="flex flex-col mb-4 w-full">
             <%= f.label :email, User.human_attribute_name(:email), class: "text-gray-200 font-medium mb-1" %>
             <%= f.email_field :email,
               class: "p-3 rounded-md bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-sky-400" %>
@@ -78,7 +78,7 @@
     </h2>
     <%= form_with(model: @user, url: profile_path, method: :patch) do |f| %>
       <%= hidden_field_tag :update_type, "password" %>
-      <div class="flex flex-cols col-span-3 gap-x-2">
+      <div class="flex flex-col md:col-span-3 gap-x-2">
         <div class="flex flex-col mb-4 w-full">
           <%= f.label :current_password, User.human_attribute_name(:current_password), class: "text-gray-200 font-medium mb-1" %>
           <%= f.password_field :current_password,
@@ -115,33 +115,33 @@
   </div>
 </section>
 
-<section id='movies-section' class="bg-gray-800 w-3/4 mx-auto rounded-md p-8 shadow-md mb-8">
+<section id='movies-section' class="bg-gray-800 w-full md:w-3/4 mx-auto rounded-md px-4 py-8 shadow-md mb-8">
   <h2 class="text-2xl font-bold text-center text-sky-400 mb-4">
     <%= User.human_attribute_name(:my_movies) %>
   </h2>
   <% if @movies.any? %>
       <turbo-frame id="movies" class="w-full">
-        <div id="movies-grid" class="grid grid-cols-2 gap-x-3 gap-y-5">
+        <div id="movies-grid" class="grid grid-cols-1 md:grid-cols-2 gap-x-3 gap-y-5">
           <% @movies.each do |movie| %>
             <div class="flex bg-gray-600 text-white rounded-lg shadow-lg overflow-hidden w-full max-w-3xl h-48">
               <% if movie.poster.attached? %>
                 <%= image_tag movie.poster.variant(resize_to_fill: [150, 192]), 
-                    alt: movie.title, class: "w-40 h-full object-cover" %>
+                    alt: movie.title, class: "w-25 sm:w-30 h-full object-cover" %>
               <% else %>
-                <%= image_tag 'movie_generic.jpg', class: 'w-40 h-full object-cover' %>
+                <%= image_tag 'movie_generic.jpg', class: 'w-25 sm:w-30 h-full object-cover' %>
               <% end %>
-              <div class="p-4 flex flex-col flex-1">
-                  <p class="font-bold"><%= movie.title %></p>
-                  <p>(<%= movie.release_year %>)</p>
+              <div class="p-2 flex flex-col flex-1">
+                  <p class="font-bold text-sm"><%= movie.title %></p>
+                  <p class="text-sm">(<%= movie.release_year %>)</p>
                   <div class="flex flex-col items-end gap-2 mt-4">
                     <%= link_to t('actions.see_details'), movie_path(movie), data: { turbo_frame: "_top" },
-                          class:'bg-sky-500 hover:bg-sky-600 text-white text-sm font-bold py-1 px-4 rounded-md transition-transform transform hover:-translate-y-0.5 hover:shadow-lg duration-200' %>
+                          class:'bg-sky-500 hover:bg-sky-600 text-white text-sm font-bold py-0.5 px-3 rounded-md transition-transform transform hover:-translate-y-0.5 hover:shadow-lg duration-200' %>
                     
                     <%= link_to t('actions.update'), edit_movie_path(movie), data: { turbo_frame: "_top" },
-                          class:'bg-sky-500 hover:bg-sky-600 text-white text-sm font-bold py-1 px-4 rounded-md transition-transform transform hover:-translate-y-0.5 hover:shadow-lg duration-200' %>
+                          class:'bg-sky-500 hover:bg-sky-600 text-white text-sm font-bold py-0.5 px-3 rounded-md transition-transform transform hover:-translate-y-0.5 hover:shadow-lg duration-200' %>
 
                    <%= link_to t('actions.delete'), "#",
-                    class: 'bg-red-500 hover:bg-red-600 text-white text-sm font-bold py-1 px-4 rounded-md transition-transform transform hover:-translate-y-0.5 hover:shadow-lg duration-200',
+                    class: 'bg-red-500 hover:bg-red-600 text-white text-sm font-bold py-0.5 px-3 rounded-md transition-transform transform hover:-translate-y-0.5 hover:shadow-lg duration-200',
                     data: { "movie-id": movie.id },
                     id: "delete-button-#{movie.id}" %>
                   </div>
