@@ -79,6 +79,4 @@ test:
 #
 production:
   <<: *default
-  database: cinehub_production
-  username: cinehub
-  password: <%= ENV["CINEHUB_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
