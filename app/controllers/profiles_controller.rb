@@ -22,7 +22,7 @@ class ProfilesController < ApplicationController
   private
 
   def update_profile
-    if @user.update(user_params)
+    if @user.update_without_password(user_params)
       redirect_to profile_path, notice: t('notices.user.updated')
     else
       @movies = @user.movies

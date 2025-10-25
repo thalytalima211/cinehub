@@ -1,6 +1,7 @@
 en:
   actions:
     return_homepage: 'Return to home page'
+    return_profile_page: 'Return to profile page'
     send: 'Send'
     login: 'Login'
     login_message: 'Log into your account'
@@ -9,6 +10,7 @@ en:
     register: 'Register'
     update: 'Update'
     delete: 'Delete'
+    see_details: 'See details'
   devise:
     sign_up: 'Create an account'
     forgot_password: 'Forgot your password?'

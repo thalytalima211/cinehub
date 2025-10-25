@@ -7,6 +7,7 @@ en:
     movie:
       register: 'Register new movie'
       no_movies: 'No movies yet.'
+      edit: 'Update movie'
   forms:
     movie:
       director_placeholder: "Enter the director's name..."
@@ -20,9 +21,12 @@ en:
   notices:
     movie:
       created: 'Film registered successfully'
+      updated: 'Film updated successfully'
   alerts:
     movie:
       not_created: 'Error registering the film. Please check the fields.'
+      not_updated: 'Error updating the film. Please check the fields.'
+      update_not_allowed: 'You cannot edit this movie'
   activerecord:
     models:
       movie:

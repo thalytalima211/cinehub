@@ -1,6 +1,7 @@
 pt-BR:
   actions:
     return_homepage: 'Voltar para a página inicial'
+    return_profile_page: 'Voltar para a página de perfil'
     send: 'Enviar'
     login: 'Entrar'
     login_message: 'Entre na sua conta'
@@ -9,6 +10,7 @@ pt-BR:
     register: 'Cadastrar'
     update: 'Editar'
     delete: 'Excluir'
+    see_details: 'Ver detalhes'
   devise:
     sign_up: 'Criar uma conta'
     forgot_password: 'Esqueceu sua senha?'

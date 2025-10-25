@@ -3,6 +3,14 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["input", "image", "instructions", "icon"]
 
+  connect() {
+    if (this.imageTarget.src) {
+      this.imageTarget.classList.remove("hidden")
+      this.instructionsTarget.classList.add("hidden")
+      this.iconTarget.classList.add("hidden")
+    }
+  }
+
   preview() {
     const file = this.inputTarget.files[0]
 

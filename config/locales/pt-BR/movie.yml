@@ -7,6 +7,7 @@ pt-BR:
     movie:
       register: 'Cadastrar novo filme'
       no_movies: 'Nenhum filme encontrado.'
+      update: 'Editar filme'
   forms:
     movie:
       director_placeholder: 'Digite o nome do diretor...'
@@ -20,9 +21,12 @@ pt-BR:
   notices:
     movie:
       created: 'Filme cadastrado com sucesso'
+      updated: 'Filme editado com sucesso'
   alerts:
     movie:
       not_created: 'Erro ao cadastrar o filme. Verifique os campos.'
+      not_updated: 'Erro ao editar o filme. Verifique os campos.'
+      update_not_allowed: 'Você não pode editar esse filme'
   activerecord:
     models:
       movie:

@@ -19,18 +19,18 @@ describe 'User sees own profile', type: :system do
         expect(page).to have_field 'Nova senha'
       end
 
-      within('#movies-grid > a:nth-child(1)') do
+      within('#movies-grid > div:nth-child(1)') do
         expect(page).to have_content 'Interestelar'
         expect(page).to have_content '2014'
-        expect(page).to have_button 'Editar'
-        expect(page).to have_button 'Excluir'
+        expect(page).to have_link 'Editar'
+        expect(page).to have_link 'Excluir'
       end
 
-      within('#movies-grid > a:nth-child(2)') do
+      within('#movies-grid > div:nth-child(2)') do
         expect(page).to have_content 'O Poderoso Chefão'
         expect(page).to have_content '1972'
-        expect(page).to have_button 'Editar'
-        expect(page).to have_button 'Excluir'
+        expect(page).to have_link 'Editar'
+        expect(page).to have_link 'Excluir'
       end
     end
   end
