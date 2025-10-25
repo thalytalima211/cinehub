@@ -4,7 +4,7 @@ describe 'User registers movie', type: :system do
   it 'sucessfully' do
     user = create :user
     create :tag, name: 'Comédia leve'
-    create :tag, name: 'Baseado em histórias reais'
+    create :tag, name: 'Viagem no tempo'
     create :category, name: 'Ação'
 
     login_as user
@@ -18,8 +18,8 @@ describe 'User registers movie', type: :system do
     select 'Ação', from: 'Categoria'
     fill_in 'Tags', with: 'Comédia'
     find('#tag_suggestions li', text: 'Comédia leve').click
-    fill_in 'Tags', with: 'Baseado'
-    find('#tag_suggestions li', text: 'Baseado em histórias reais').click
+    fill_in 'Tags', with: 'Viagem'
+    find('#tag_suggestions li', text: 'Viagem no tempo').click
     click_on 'Cadastrar'
 
     expect(page).to have_content 'Filme cadastrado com sucesso'
@@ -28,7 +28,7 @@ describe 'User registers movie', type: :system do
     expect(page).to have_content '175 minutos'
     expect(page).to have_content 'Diretor: Fernando Meirelles'
     expect(page).to have_content 'Categoria: Ação'
-    expect(page).to have_content 'Tags: Comédia leve, Baseado em histórias reais'
+    expect(page).to have_content 'Tags: Comédia leve, Viagem no tempo'
   end
 
   it 'with missing params' do
