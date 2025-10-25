@@ -119,29 +119,42 @@
         data-select-suggestions-multiple-value="true"
         data-action="click@document->select-suggestions#hideIfOutside"
         class="flex flex-col mb-4 relative">
+
         <%= f.label :tag_ids, Movie.human_attribute_name(:tags), for: "movie_tag_ids_input", class: "text-gray-200 font-medium mb-1" %>
 
-        <input type="text" placeholder="<%= t('forms.movie.tags_placeholder')%>" id="movie_tag_ids_input"
-            data-select-suggestions-target="search"
-            data-action="input->select-suggestions#filter"
-            class="p-3 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-sky-400">
+        <input type="text"
+                id="movie_tag_ids_input"
+                placeholder="<%= t('forms.movie.tags_placeholder') %>"
+                data-select-suggestions-target="search"
+                data-action="input->select-suggestions#filter"
+                class="p-3 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-sky-400">
 
-        <ul data-select-suggestions-target="suggestions" id="tag_suggestions"
+        <ul data-select-suggestions-target="suggestions"
+            id="tag_suggestions"
             class="absolute left-0 top-full mt-1 z-50 bg-gray-700 rounded-md shadow-md max-h-40 overflow-y-auto hidden w-full">
-
             <% @tags.each do |tag| %>
-                <li data-id="<%= tag.id %>"
-                    data-select-suggestions-target="item"
-                    data-action="click->select-suggestions#select"
-                    class="p-2 hover:bg-sky-600 cursor-pointer text-gray-200">
-                    <%= t("tags.#{tag.name}") %>
-                </li>
+            <li data-id="<%= tag.id %>"
+                data-select-suggestions-target="item"
+                data-action="click->select-suggestions#select"
+                class="p-2 hover:bg-sky-600 cursor-pointer text-gray-200">
+                <%= t("tags.#{tag.name}") %>
+            </li>
             <% end %>
         </ul>
 
-        <div data-select-suggestions-target="selected" class="flex flex-wrap gap-2 mt-3"></div>
+        <div data-select-suggestions-target="selected" class="flex flex-wrap gap-2 mt-3">
+            <% movie.tags.each do |tag| %>
+            <span class="bg-sky-600 text-white px-2 py-1 rounded-md text-sm flex items-center gap-1" data-id="<%= tag.id %>">
+                <%= t("tags.#{tag.name}") %>
+                <button type="button"
+                        data-action="select-suggestions#remove"
+                        data-id="<%= tag.id %>"
+                        class="text-white hover:text-red-400">×</button>
+            </span>
+            <% end %>
+        </div>
 
-        <input type="hidden" name="movie[tag_ids][]" data-select-suggestions-target="hidden">
+        <div data-select-suggestions-target="hidden"></div>
     </div>
 
     <div class="flex justify-center">

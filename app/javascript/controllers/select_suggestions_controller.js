@@ -6,6 +6,13 @@ export default class extends Controller {
 
   connect() {
     this.selectedIds = []
+
+    this.selectedTarget.querySelectorAll("span[data-id]").forEach(span => {
+      const id = span.dataset.id
+      this.selectedIds.push(id)
+    })
+
+    this.updateHiddenInputs()
   }
 
   filter() {
@@ -24,34 +31,30 @@ export default class extends Controller {
   select(event) {
     const item = event.currentTarget
     const id = item.dataset.id
-    const name = item.textContent
+    const name = item.textContent.trim()
 
     if (this.multipleValue) {
       if (!this.selectedIds.includes(id)) {
         this.selectedIds.push(id)
         this.addTagElement(id, name)
-        this.hiddenTarget.innerHTML = ""
-
-        this.selectedIds.forEach(id => {
-          const input = document.createElement("input")
-          input.type = "hidden"
-          input.name = "movie[tag_ids][]"
-          input.value = id
-          this.hiddenTarget.appendChild(input)
-        })
+        this.updateHiddenInputs()
       }
       this.searchTarget.value = ""
     } else {
-      this.searchTarget.value = name.trim()
-      this.hiddenTarget.value = id
+      this.searchTarget.value = name
+      this.hiddenTarget.innerHTML = `<input type="hidden" name="movie[tag_ids][]" value="${id}">`
+      this.selectedIds = [id]
     }
 
     this.suggestionsTarget.classList.add("hidden")
   }
 
   addTagElement(id, name) {
+    if (this.selectedTarget.querySelector(`[data-id='${id}']`)) return
+
     const tagEl = document.createElement("span")
     tagEl.className = "bg-sky-600 text-white px-2 py-1 rounded-md text-sm flex items-center gap-1"
+    tagEl.dataset.id = id
     tagEl.innerHTML = `${name} <button type="button" data-action="select-suggestions#remove" data-id="${id}" class="text-white hover:text-red-400">×</button>`
     this.selectedTarget.appendChild(tagEl)
   }
@@ -60,7 +63,18 @@ export default class extends Controller {
     const id = event.target.dataset.id
     this.selectedIds = this.selectedIds.filter(x => x !== id)
     event.target.parentElement.remove()
-    this.hiddenTarget.value = this.selectedIds
+    this.updateHiddenInputs()
+  }
+
+  updateHiddenInputs() {
+    this.hiddenTarget.innerHTML = ""
+    this.selectedIds.forEach(id => {
+      const input = document.createElement("input")
+      input.type = "hidden"
+      input.name = "movie[tag_ids][]"
+      input.value = id
+      this.hiddenTarget.appendChild(input)
+    })
   }
 
   hideIfOutside(event) {

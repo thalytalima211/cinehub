@@ -67,7 +67,7 @@ class MoviesController < ApplicationController
   end
 
   def movie_params
-    params.require(:movie).permit(:poster, :title, :description, :release_year, :duration, :category_id)
+    params.require(:movie).permit(:poster, :title, :description, :release_year, :duration, :category_id, tag_ids: [])
   end
 
   def set_collections
