@@ -36,8 +36,7 @@ movie1 = Movie.create!(
   duration: 175,
   director: director1,
   category: category4,
-  user: user1,
-  average_rating: 4.9
+  user: user1
 )
 
 movie2 = Movie.create!(
@@ -47,8 +46,7 @@ movie2 = Movie.create!(
   duration: 169,
   director: director2,
   category: category8,
-  user: user2,
-  average_rating: 4.8
+  user: user2
 )
 
 movie3 = Movie.create!(
@@ -58,8 +56,7 @@ movie3 = Movie.create!(
   duration: 148,
   director: director2,
   category: category8,
-  user: user3,
-  average_rating: 4.7
+  user: user3
 )
 
 movie4 = Movie.create!(
@@ -69,8 +66,7 @@ movie4 = Movie.create!(
   duration: 142,
   director: director3,
   category: category4,
-  user: user1,
-  average_rating: 4.9
+  user: user1
 )
 
 movie5 = Movie.create!(
@@ -80,8 +76,7 @@ movie5 = Movie.create!(
   duration: 178,
   director: director4,
   category: category10,
-  user: user2,
-  average_rating: 4.8
+  user: user2
 )
 
 movie6 = Movie.create!(
@@ -91,8 +86,7 @@ movie6 = Movie.create!(
   duration: 136,
   director: director5,
   category: category1,
-  user: user3,
-  average_rating: 4.7
+  user: user3
 )
 
 movie7 = Movie.create!(
@@ -102,8 +96,7 @@ movie7 = Movie.create!(
   duration: 139,
   director: director6,
   category: category4,
-  user: user2,
-  average_rating: 4.6
+  user: user2
 )
 
 movie8 = Movie.create!(
@@ -113,8 +106,7 @@ movie8 = Movie.create!(
   duration: 155,
   director: director7,
   category: category1,
-  user: user3,
-  average_rating: 4.8
+  user: user3
 )
 
 movie9 = Movie.create!(
@@ -124,8 +116,7 @@ movie9 = Movie.create!(
   duration: 127,
   director: director8,
   category: category10,
-  user: user1,
-  average_rating: 4.7
+  user: user1
 )
 
 movie10 = Movie.create!(
@@ -135,8 +126,7 @@ movie10 = Movie.create!(
   duration: 162,
   director: director9,
   category: category10,
-  user: user2,
-  average_rating: 4.6
+  user: user2
 )
 
 movie1.poster.attach(io: File.open("db/images/movie1.jpg"), filename: "movie1.jpg")

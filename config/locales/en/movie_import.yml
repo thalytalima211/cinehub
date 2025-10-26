@@ -17,6 +17,7 @@ en:
       status_title: "Import Status"
       status_message: "Your import was completed with status: %{status}."
       error_message: "Error: %{message}"
+    no_imports_yet: 'No imports made yet.'
     new_import: 'Import Movies from CSV'
     import_history: 'Import History'
     select_csv_label: 'Select CSV file'

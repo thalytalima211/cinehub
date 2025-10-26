@@ -17,6 +17,7 @@ pt-BR:
       status_title: "Status da Importação"
       status_message: "Sua importação foi concluída com status: %{status}."
       error_message: "Erro: %{message}"
+    no_imports_yet: 'Nenhuma importação realizada ainda.'
     new_import: 'Importar Filmes em CSV'
     import_history: 'Histórico de Importações'
     select_csv_label: 'Selecione o arquivo CSV'
