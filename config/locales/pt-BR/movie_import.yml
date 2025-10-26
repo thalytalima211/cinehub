@@ -1,4 +1,35 @@
 pt-BR:
   movie_import:
+    status:
+      pending: 'Pendente'
+      completed: 'Concluído'
+      processing: 'Em Processamento'
+      failed: 'Falhou'
+    errors:
+      malformed_csv: "O arquivo CSV está mal formatado. Verifique se há vírgulas ou aspas faltando."
+      encoding: "Erro de codificação: o arquivo deve estar em UTF-8."
+      no_headers: "O arquivo CSV está sem cabeçalho. Verifique se contém colunas como 'title', 'description', etc."
+      not_found: "Erro na linha %{line}: %{message} (Categoria não encontrada)"
+      invalid_record: "Erro na linha %{line}: registro de filme inválido — %{messages}"
+      unexpected: "Falha inesperada: %{message}"
     mail:
       subject: "Importação de filmes concluída!"
+    new_import: 'Importar Filmes em CSV'
+    import_history: 'Histórico de Importações'
+    select_csv_label: 'Selecione o arquivo CSV'
+    select_csv: 'Selecione um arquivo CSV...'
+    only_csv: 'Apenas arquivos .csv são permitidos'
+    upload: 'Enviar Arquivo'
+    create:
+      success: 'Arquivo CSV enviado com sucesso! Você receberá um e-mail quando a importação for concluída.'
+  activerecord:
+    models:
+      import:
+        one: 'Importação'
+        many: 'Importações'
+    attributes:
+      import:
+        file: 'Arquivo'
+        date: 'Data'
+        status: 'Status'
+        error_message: 'Mensagem de Erro'

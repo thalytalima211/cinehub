@@ -1,0 +1,39 @@
+<section class="flex flex-col w-full mt-4 mb-6">
+    <%= link_to t('actions.return_profile_page'), profile_path,
+        class: "px-5 py-2 rounded-lg bg-gray-800 w-fit text-white
+            font-medium hover:bg-gray-700 transition-colors duration-300 
+            shadow-md hover:shadow-lg transform hover:-translate-y-0.5" %>
+    <h2 class="text-3xl font-bold text-center text-white mt-3 mb-6"><%= t('movie_import.import_history') %></h2>
+
+    <div class="overflow-x-auto">
+        <table class="min-w-full bg-gray-800 text-gray-200 rounded-lg shadow-md">
+            <thead>
+                <tr class="text-left border-b border-gray-700">
+                <th class="px-4 py-2"><%= Import.human_attribute_name(:date) %></th>
+                <th class="px-4 py-2"><%= Import.human_attribute_name(:status) %></th>
+                <th class="px-4 py-2"><%= Import.human_attribute_name(:error_message) %></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @imports.each do |import| %>
+                <tr class="border-b border-gray-700 hover:bg-gray-700 transition-colors">
+                    <td class="px-4 py-2"><%= I18n.l(import.created_at.to_date) %></td>
+                    <td class="px-4 py-2">
+                    <% status_color = case import.status
+                        when 'completed' then 'text-green-400 font-semibold'
+                        when 'processing' then 'text-yellow-400 font-semibold'
+                        when 'failed' then 'text-red-400 font-semibold'
+                    end %>
+                    <span class="<%= status_color %>">
+                        <%= t("movie_import.status.#{import.status}") %>
+                    </span>
+                    </td>
+                    <td class="px-4 py-2 text-red-300">
+                    <%= import.error_message.presence || '-' %>
+                    </td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</section>

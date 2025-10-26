@@ -1,6 +1,9 @@
 <section class="flex flex-col w-full mt-4 mb-6">
     <% if user_signed_in? %>
-        <%= link_to t('actions.movie.register'), new_movie_path, class: 'mt-4 w-fit bg-[#1E2939] text-white font-medium p-3 rounded-md ml-auto mb-4 transition hover:scale-105' %>
+        <div class="flex justify-end gap-x-2">
+            <%= link_to t('actions.movie.register'), new_movie_path, class: 'my-4 w-fit bg-[#1E2939] text-white font-medium p-3 rounded-md transition hover:scale-105' %>
+            <%= link_to t('movie_import.new_import'), new_import_path, class: 'my-4 w-fit bg-[#1E2939] text-white font-medium p-3 rounded-md transition hover:scale-105'%>
+        </div>
     <% end %>
 
     <section id='search-movie' class="flex flex-col bg-gray-800 p-6 rounded-md shadow-md mb-6">

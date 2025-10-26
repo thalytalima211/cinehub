@@ -1,4 +1,35 @@
 en:
   movie_import:
+    status:
+      pending: 'Pending'
+      completed: 'Completed'
+      processing: 'Processing'
+      failed: 'Failed'
+    errors:
+      malformed_csv: "The CSV file is malformed. Check for missing commas or quotes."
+      encoding: "Encoding error: file must be UTF-8."
+      no_headers: "The CSV file has no headers. Ensure it contains columns like 'title', 'description', etc."
+      not_found: "Error on line %{line}: %{message} (Category not found)"
+      invalid_record: "Error on line %{line}: invalid movie record — %{messages}"
+      unexpected: "Unexpected failure: %{message}"
     mail:
       subject: "Movie import completed!"
+    new_import: 'Import Movies from CSV'
+    import_history: 'Import History'
+    select_csv_label: 'Select CSV file'
+    select_csv: 'Choose a CSV file...'
+    only_csv: 'Only .csv files are allowed'
+    upload: 'Upload File'
+    create:
+      success: 'CSV file uploaded successfully! You will receive an email when the import finishes.'
+  activerecord:
+    models:
+      import:
+        one: 'Import'
+        many: 'Imports'
+    attributes:
+      import:
+        file: 'File'
+        date: 'Date'
+        status: 'Status'
+        error_message: 'Error message'

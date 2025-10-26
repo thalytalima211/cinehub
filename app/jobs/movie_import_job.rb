@@ -7,11 +7,11 @@ class MovieImportJob < ApplicationJob
     import = Import.find(import_id)
     process_import(import)
   rescue CSV::MalformedCSVError
-    fail_import(import, 'O arquivo CSV está mal formatado. Verifique se há vírgulas ou aspas faltando.')
+    fail_import(import, I18n.t('movie_import.errors.malformed_csv'))
   rescue Encoding::UndefinedConversionError, Encoding::InvalidByteSequenceError
-    fail_import(import, 'Erro de codificação: o arquivo deve estar em UTF-8.')
+    fail_import(import, I18n.t('movie_import.errors.encoding'))
   rescue StandardError => e
-    fail_import(import, "Falha inesperada: #{e.message}")
+    fail_import(import, I18n.t('movie_import.errors.unexpected', message: e.message))
   end
 
   private
@@ -33,9 +33,7 @@ class MovieImportJob < ApplicationJob
   def parse_csv(import)
     content = import.file.download.force_encoding('UTF-8')
     csv = CSV.parse(content, headers: true)
-    if csv.headers.blank?
-      raise 'O arquivo CSV está sem cabeçalho. Verifique se contém colunas como \'title\', \'description\', etc.'
-    end
+    raise I18n.t('movie_import.errors.no_headers') if csv.headers.blank?
 
     csv
   end
@@ -50,7 +48,7 @@ class MovieImportJob < ApplicationJob
     attrs = build_movie_attributes(row, director, category, user)
     create_movie!(attrs, index)
   rescue ActiveRecord::RecordNotFound => e
-    raise "Erro na linha #{index + 2}: #{e.message} (Categoria não encontrada)"
+    raise I18n.t('movie_import.errors.not_found', line: index + 2, message: e.message)
   end
 
   def build_movie_attributes(row, director, category, user)
@@ -68,7 +66,8 @@ class MovieImportJob < ApplicationJob
   def create_movie!(attrs, index)
     Movie.create!(attrs)
   rescue ActiveRecord::RecordInvalid => e
-    raise "Erro na linha #{index + 2}: registro de filme inválido — #{e.record.errors.full_messages.join(', ')}"
+    raise I18n.t('movie_import.errors.invalid_record', line: index + 2,
+                                                       messages: e.record.errors.full_messages.join(', '))
   end
 
   def update_status(import, status)

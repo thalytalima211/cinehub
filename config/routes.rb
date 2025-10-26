@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
 
   resource :profile, only: [:show, :update]
+  resources :imports, only: [:new, :create, :index]
   # Defines the root path route ("/")
   # root "posts#index"
 end
