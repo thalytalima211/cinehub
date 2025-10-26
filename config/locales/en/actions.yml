@@ -19,3 +19,7 @@ en:
     registrations:
       minimum_characters: 'mininum characters'
     send_reset_instructions: "Send reset instructions"
+    change_password: 'Change your password'
+    change_password_fields:
+        new_password: 'New password'
+        password_confirmation: 'Confirm new password'

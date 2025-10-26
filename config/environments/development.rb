@@ -1,5 +1,7 @@
 require "active_support/core_ext/integer/time"
 
+Rails.application.routes.default_url_options = { host: 'localhost', port: 3000 }
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -74,6 +76,9 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   # Raise error when a before_action's only/except options reference missing actions
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.asset_host = 'http://localhost:3000'
+
   config.action_controller.raise_on_missing_callback_actions = true
 
   config.action_mailer.delivery_method = :smtp

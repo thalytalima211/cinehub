@@ -19,5 +19,8 @@ pt-BR:
     registrations:
       minimum_characters: 'caracteres no mínimo'
     send_reset_instructions: "Enviar instruções de redefinição"
-    
+    change_password: 'Altere sua senha'
+    change_password_fields:
+      new_password: 'Nova senha'
+      password_confirmation: 'Confirme a nova senha'
   
