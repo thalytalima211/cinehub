@@ -143,7 +143,7 @@
                     <%= link_to t('actions.update'), edit_movie_path(movie), data: { turbo_frame: "_top" },
                           class:'bg-sky-500 hover:bg-sky-600 text-white text-sm font-bold py-0.5 px-3 rounded-md transition-transform transform hover:-translate-y-0.5 hover:shadow-lg duration-200' %>
 
-                   <%= link_to t('actions.delete'), "#",
+                   <%= link_to t('actions.delete'), "#", 
                     class: 'bg-red-500 hover:bg-red-600 text-white text-sm font-bold py-0.5 px-3 rounded-md transition-transform transform hover:-translate-y-0.5 hover:shadow-lg duration-200',
                     data: { "movie-id": movie.id },
                     id: "delete-button-#{movie.id}" %>
@@ -164,9 +164,9 @@
         <p class="mb-6"><%= t('actions.movie.confirm_delete_message') %></p>
         <div class="flex justify-end gap-3">
           <button id="cancel-delete" data-delete-modal-target="cancelButton" class="px-4 py-2 bg-gray-600 rounded hover:bg-gray-700"><%= t('actions.cancel') %></button>
-          <form id="delete-form"  data-delete-modal-target="deleteForm" method="post">
+          <form id="delete-form" data-delete-modal-target="deleteForm" method="post">
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
             <%= hidden_field_tag :_method, :delete %>
-            <%= csrf_meta_tags %>
             <button type="submit" class="px-4 py-2 bg-red-600 rounded hover:bg-red-700"><%= t('actions.delete') %></button>
           </form>
         </div>
