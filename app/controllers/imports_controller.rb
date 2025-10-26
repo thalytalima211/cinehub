@@ -13,12 +13,17 @@ class ImportsController < ApplicationController
     @import = build_import
 
     if @import.save
-      MovieImportJob.perform_later(@import.id)
+      perform_jobs
       redirect_to imports_path, notice: t('movie_import.create.success')
     else
       flash.now[:alert] = @import.errors.full_messages.to_sentence
       render :new
     end
+  end
+
+  def perform_jobs
+    MovieImportJob.perform_now(@import.id) if Rails.env.production?
+    MovieImportJob.perform_later(@import.id) if Rails.env.local?
   end
 
   private
