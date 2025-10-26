@@ -30,6 +30,7 @@ class ImportsController < ApplicationController
   def build_import
     import = Import.new(import_params)
     import.user = current_user
+    import.pending!
     import
   end
 end

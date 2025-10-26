@@ -14,6 +14,9 @@ pt-BR:
       unexpected: "Falha inesperada: %{message}"
     mail:
       subject: "Importação de filmes concluída!"
+      status_title: "Status da Importação"
+      status_message: "Sua importação foi concluída com status: %{status}."
+      error_message: "Erro: %{message}"
     new_import: 'Importar Filmes em CSV'
     import_history: 'Histórico de Importações'
     select_csv_label: 'Selecione o arquivo CSV'

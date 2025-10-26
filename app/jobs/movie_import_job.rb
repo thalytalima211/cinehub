@@ -24,9 +24,9 @@ class MovieImportJob < ApplicationJob
 
     ActiveRecord::Base.transaction do
       import_movies(csv, user)
+      update_status(import, :completed)
     end
 
-    update_status(import, :completed)
     notify_user(import)
   end
 

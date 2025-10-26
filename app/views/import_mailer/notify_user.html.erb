@@ -1,5 +1,8 @@
-<h2>Status da Importação</h2>
-<p>Sua importação foi concluída com status: <%= @import.status %>.</p>
+<h2><%= t('movie_import.mail.status_title') %></h2>
+<p>
+  <%= t('movie_import.mail.status_message', status: t("movie_import.status.#{@import.status}")) %>
+</p>
+
 <% if @import.failed? %>
-  <p>Erro: <%= @import.error_message %></p>
+  <p><%= t('movie_import.mail.error_message', message: @import.error_message) %></p>
 <% end %>

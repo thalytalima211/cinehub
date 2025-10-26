@@ -14,6 +14,9 @@ en:
       unexpected: "Unexpected failure: %{message}"
     mail:
       subject: "Movie import completed!"
+      status_title: "Import Status"
+      status_message: "Your import was completed with status: %{status}."
+      error_message: "Error: %{message}"
     new_import: 'Import Movies from CSV'
     import_history: 'Import History'
     select_csv_label: 'Select CSV file'

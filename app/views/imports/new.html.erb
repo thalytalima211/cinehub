@@ -9,21 +9,22 @@
             <%= t('movie_import.new_import') %>
         </h1>
 
-        <%= form_with(model: @import, url: imports_path, local: true, html: { multipart: true, class: "flex flex-col gap-6" }) do |f| %>
-        <div class="flex flex-col">
+        <div data-controller="file-preview">
+        <%= form_with(model: @import, url: imports_path, local: true, html: { multipart: true, class: "flex flex-col gap-2" }) do |f| %>
             <%= f.label :file, t('movie_import.select_csv_label'), class: "text-white font-semibold mb-2" %>
-            
-            <label class="flex items-center justify-between p-3 bg-gray-700 rounded-md cursor-pointer hover:bg-gray-600 transition-colors">
-            <span class="text-gray-200"><%= t('movie_import.select_csv') %></span>
-            <%= f.file_field :file, accept: '.csv', class: "hidden" %>
-            </label>
-            <% if f.object.errors[:file].any? %>
-                <p class="text-sm text-red-500 mt-1"><%= f.object.errors.full_messages_for(:file).join(', ') %></p>
-            <% end %>
-            <p class="text-gray-400 text-sm mt-1"><%= t('movie_import.only_csv')%></p>
-        </div>
 
-        <%= f.submit t('movie_import.upload'), class: "bg-sky-500 text-white px-6 py-2 rounded-md hover:bg-sky-600 transition-colors w-fit mt-2 font-medium shadow-md hover:shadow-lg" %>
+            <label class="flex items-center justify-between p-3 bg-gray-700 rounded-md cursor-pointer hover:bg-gray-600 transition-colors">
+            <span data-file-preview-target="filename" class="text-gray-200"><%= t('movie_import.select_csv') %></span>
+            <%= f.file_field :file, accept: '.csv', class: "hidden", data: { action: "change->file-preview#update" } %>
+            </label>
+
+            <% if f.object.errors[:file].any? %>
+            <p class="text-sm text-red-500 mt-1"><%= f.object.errors.full_messages_for(:file).join(', ') %></p>
+            <% end %>
+            <p class="text-gray-400 text-sm mt-1"><%= t('movie_import.only_csv') %></p>
+
+            <%= f.submit t('movie_import.upload'), class: "bg-sky-500 text-white px-6 py-2 rounded-md hover:bg-sky-600 transition-colors w-fit mt-2 font-medium shadow-md hover:shadow-lg" %>
         <% end %>
+        </div>
     </div>
 </section>
