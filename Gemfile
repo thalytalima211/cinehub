@@ -50,6 +50,7 @@ gem 'activestorage-cloudinary-service'
 gem 'cloudinary'
 gem 'dotenv-rails', groups: %i[development test]
 gem 'image_processing', '~> 1.2'
+gem 'sidekiq'
 
 gem 'simplecov', require: false, group: :test
 

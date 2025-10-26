@@ -1,0 +1,4 @@
+en:
+  movie_import:
+    mail:
+      subject: "Movie import completed!"

@@ -1,0 +1,4 @@
+pt-BR:
+  movie_import:
+    mail:
+      subject: "Importação de filmes concluída!"

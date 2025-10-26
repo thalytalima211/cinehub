@@ -9,6 +9,7 @@ class Movie < ApplicationRecord
   has_many :tags, through: :movie_tags
 
   validates :title, :description, :release_year, :duration, presence: true
+  validates :title, uniqueness: true
   validates :title, length: { maximum: 150 }
   validates :description, length: { maximum: 2000 }
   validates :release_year, numericality: {
